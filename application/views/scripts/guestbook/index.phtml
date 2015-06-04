@@ -4,28 +4,35 @@
         'action'     => 'sign'
     ),
     'default',
-    true) ?>">Sign Our Guestbook</a></p>
+    true) ?>">Sign Our Guestbook</a>
+</p>
 <table class="table table-bordered">
     <?php foreach ($this->entries as $entry): ?>
     <tr>
-    <td><?php echo $this->escape($entry->email) ?></td>
-    <td><?php echo $this->escape($entry->comment) ?></td>
-    <td><a href="<?php echo $this->url(
-    array(
-        'controller' => 'guestbook',
-        'action'     => 'delete',
-        'id'     => $entry->id
-    ),
-    'default',
-    true) ?>">Delete</a></td>
-    <td><a href="<?php echo $this->url(
-    array(
-        'controller' => 'guestbook',
-        'action'     => 'sign',
-        'id'     => $entry->id
-    ),
-    'default',
-    true) ?>">Update</a></td>
-</tr>
+        <td><?php echo $this->escape($entry->email) ?></td>
+        <td><?php echo $this->escape($entry->comment) ?></td>
+        <td>
+            <a href="<?php echo $this->url(
+                array(
+                    'controller' => 'guestbook',
+                    'action'     => 'delete',
+                    'id'     => $entry->id
+                ),
+                'default',
+                true) ?>">Delete
+            </a>
+        </td>
+        <td>
+            <a href="<?php echo $this->url(
+                array(
+                    'controller' => 'guestbook',
+                    'action'     => 'sign',
+                    'id'     => $entry->id
+                ),
+                'default',
+                true) ?>">Update
+            </a>
+        </td>
+    </tr>
     <?php endforeach ?>
 </table>

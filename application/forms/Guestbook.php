@@ -14,9 +14,9 @@ class Application_Form_Guestbook extends Zend_Form
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'EmailAddress',
-            )
-        ));
- 
+                )
+            ));
+
         // Add the comment element
         $this->addElement('textarea', 'comment', array(
             'label'      => 'Please Comment:',
@@ -24,8 +24,8 @@ class Application_Form_Guestbook extends Zend_Form
             'validators' => array(
                 array('validator' => 'StringLength', 'options' => array(0, 20))
                 )
-        ));
- 
+            ));
+
         // Add a captcha
         $this->addElement('captcha', 'captcha', array(
             'label'      => 'Please enter the 5 letters displayed below:',
@@ -34,20 +34,22 @@ class Application_Form_Guestbook extends Zend_Form
                 'captcha' => 'Figlet',
                 'wordLen' => 5,
                 'timeout' => 300
-            )
-        ));
+                )
+            ));
 
+        // Add a hidden id element
         $this->addElement('hidden', 'id');
+        
         // Add the submit button
         $this->addElement('submit', 'submit', array(
             'ignore'   => true,
             'label'    => 'Sign Guestbook',
-        ));
- 
+            ));
+
         // And finally add some CSRF protection
         $this->addElement('hash', 'csrf', array(
             'ignore' => true,
-        ));
+            ));
     }
 
 

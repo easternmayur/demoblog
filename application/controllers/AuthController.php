@@ -3,15 +3,11 @@
 class AuthController extends Zend_Controller_Action
 {
 
-	public function init()
-	{
-		/* Initialize action controller here */
-	}
-
 	public function indexAction()
 	{
 		$login_form = new Application_Form_Login();
 		$request = $this->getRequest();
+		
 		if ($request->isPost()) {
 			if ($login_form->isValid($request->getPost())) {
 				if($this->_process($login_form->getValues())){
@@ -19,6 +15,7 @@ class AuthController extends Zend_Controller_Action
 				}
 			}
 		}
+		
 		$this->view->form = $login_form;
 	}
 

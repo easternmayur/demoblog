@@ -9,9 +9,11 @@ class Application_Model_GuestbookMapper
         if (is_string($dbTable)) {
             $dbTable = new $dbTable();
         }
+        
         if (!$dbTable instanceof Zend_Db_Table_Abstract) {
             throw new Exception('Invalid table data gateway provided');
         }
+        
         $this->_dbTable = $dbTable;
         return $this;
     }
@@ -21,6 +23,7 @@ class Application_Model_GuestbookMapper
         if (null === $this->_dbTable) {
             $this->setDbTable('Application_Model_DbTable_Guestbook');
         }
+        
         return $this->_dbTable;
     }
 
@@ -43,9 +46,11 @@ class Application_Model_GuestbookMapper
     public function find($id)
     {
         $result = $this->getDbTable()->find($id);
+        
         if (0 == count($result)) {
             return;
         }
+        
         $row = $result->current();
         $guestbook = new Application_Model_Guestbook();
         $guestbook->setId($id)
@@ -66,6 +71,7 @@ class Application_Model_GuestbookMapper
     {
         $resultSet = $this->getDbTable()->fetchAll();
         $entries   = array();
+        
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Guestbook();
             $entry->setId($row->id)
@@ -74,6 +80,7 @@ class Application_Model_GuestbookMapper
             ->setCreated($row->created);
             $entries[] = $entry;
         }
+        
         return $entries;
     }
 }

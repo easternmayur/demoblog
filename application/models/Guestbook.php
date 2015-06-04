@@ -6,14 +6,14 @@ class Application_Model_Guestbook
     protected $_created;
     protected $_email;
     protected $_id;
- 
+    
     public function __construct(array $options = null)
     {
         if (is_array($options)) {
             $this->setOptions($options);
         }
     }
- 
+    
     public function __set($name, $value)
     {
         $method = 'set' . $name;
@@ -22,7 +22,7 @@ class Application_Model_Guestbook
         }
         $this->$method($value);
     }
- 
+    
     public function __get($name)
     {
         $method = 'get' . $name;
@@ -31,7 +31,7 @@ class Application_Model_Guestbook
         }
         return $this->$method();
     }
- 
+    
     public function setOptions(array $options)
     {
         $methods = get_class_methods($this);
@@ -43,46 +43,46 @@ class Application_Model_Guestbook
         }
         return $this;
     }
- 
+    
     public function setComment($text)
     {
         $this->_comment = (string) $text;
         return $this;
     }
- 
+    
     public function getComment()
     {
         return $this->_comment;
     }
- 
+    
     public function setEmail($email)
     {
         $this->_email = (string) $email;
         return $this;
     }
- 
+    
     public function getEmail()
     {
         return $this->_email;
     }
- 
+    
     public function setCreated($ts)
     {
         $this->_created = $ts;
         return $this;
     }
- 
+    
     public function getCreated()
     {
         return $this->_created;
     }
- 
+    
     public function setId($id)
     {
         $this->_id = (int) $id;
         return $this;
     }
- 
+    
     public function getId()
     {
         return $this->_id;
