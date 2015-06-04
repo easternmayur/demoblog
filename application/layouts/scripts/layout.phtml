@@ -1,0 +1,23 @@
+<?php echo $this->doctype() ?>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blog System</title>
+	<?php echo $this->headLink()->appendStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css') ?>
+</head>
+<body>
+	<div class="container">
+		<?php echo $this->loggedInAs(); ?>
+		<?php if (count($this->messages)) : ?>
+			<ul id="messages">
+				<?php foreach ($this->messages as $message) : ?>
+					<li><?php echo $this->escape($message); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+		<?php echo $this->layout()->content; ?>
+	</div>
+</body>
+</html>
