@@ -5,19 +5,17 @@ class GuestbookController extends Zend_Controller_Action
 
 	public function init()
 	{
-		/* Initialize action controller here */
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_helper->redirector('index', 'auth');
+		}
 	}
 
 	public function indexAction()
 	{
-		$auth = Zend_Auth::getInstance();
-		if ($auth->hasIdentity()) {
-			$guestbook = new Application_Model_GuestbookMapper();
-			$this->view->entries = $guestbook->fetchAll();
-			$this->view->messages = $this->_helper->flashMessenger->getMessages();	
-		}else{
-			return $this->_helper->redirector('index', 'auth');
-		}
+		$guestbook = new Application_Model_GuestbookMapper();
+		$this->view->entries = $guestbook->fetchAll();
+		$this->view->messages = $this->_helper->flashMessenger->getMessages();
 		
 	}
 
