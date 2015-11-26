@@ -9,6 +9,13 @@ class AuthControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         parent::setUp();
     }
 
+    public function testIndexActionShouldContainLoginForm()
+    {
+        $this->dispatch('/auth');
+        $this->assertAction('index');
+        $this->assertQueryCount('form#login', 1);
+    }
+
 
 }
 
