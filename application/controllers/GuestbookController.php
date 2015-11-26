@@ -9,6 +9,8 @@ class GuestbookController extends Zend_Controller_Action
 		if (!$auth->hasIdentity()) {
 			return $this->_helper->redirector('index', 'auth');
 		}
+
+		$sdf = new Formatter_test();
 	}
 
 	public function indexAction()
